@@ -19,8 +19,13 @@ class JointsMSELoss(nn.Module):
         self.use_target_weight = use_target_weight
 
     def forward(self, output, target, target_weight):
+        # output:-> [bs, c, h, w]
         batch_size = output.size(0)
+        # num_joints is the output channels, for coco it is 17 key points
+        # so the num_joints is 17 for coco dataset
         num_joints = output.size(1)
+        # split(tensor, int or list[int], dim) it will split tensor to list tensor along the dim
+        # split(1, 1) split the tensor to different joint class
         heatmaps_pred = output.reshape((batch_size, num_joints, -1)).split(1, 1)
         heatmaps_gt = target.reshape((batch_size, num_joints, -1)).split(1, 1)
         loss = 0
