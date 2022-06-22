@@ -1,4 +1,6 @@
 # ------------------------------------------------------------------------------
+# This file aims to read ground truth bounding boxes, image path, and key points,
+# and the COCODataset is inherited from JointsDataset
 # Copyright (c) Microsoft
 # Licensed under the MIT License.
 # Written by Bin Xiao (Bin.Xiao@microsoft.com)
@@ -157,10 +159,12 @@ class COCODataset(JointsDataset):
 
         annIds = self.coco.getAnnIds(imgIds=index, iscrowd=False)
         objs = self.coco.loadAnns(annIds)
+        # len(objs['keypoints']) = 51 = 17 key points * (x, y, visible)
 
         # sanitize bboxes
         valid_objs = []
         for obj in objs:
+            # x, y is the left-top point
             x, y, w, h = obj['bbox']
             x1 = np.max((0, x))
             y1 = np.max((0, y))
@@ -194,6 +198,7 @@ class COCODataset(JointsDataset):
                 joints_3d_vis[ipt, 1] = t_vis
                 joints_3d_vis[ipt, 2] = 0
 
+            # self._box2cs will return the center point and scale = [w/200, h/200]*1.25
             center, scale = self._box2cs(obj['clean_bbox'][:4])
             rec.append({
                 'image': self.image_path_from_index(index),

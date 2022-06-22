@@ -111,6 +111,9 @@ class JointsDataset(Dataset):
         return len(self.db)
 
     def __getitem__(self, idx):
+        """
+        return:-> input, target, target_weight, meta
+        """
         db_rec = copy.deepcopy(self.db[idx])
 
         image_file = db_rec['image']
@@ -198,6 +201,9 @@ class JointsDataset(Dataset):
         return input, target, target_weight, meta
 
     def select_data(self, db):
+        """
+        select data
+        """
         db_selected = []
         for rec in db:
             num_vis = 0

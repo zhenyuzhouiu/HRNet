@@ -40,9 +40,13 @@ import models
 def parse_args():
     parser = argparse.ArgumentParser(description='Train keypoints network')
     # general
+    # parser.add_argument('--cfg',
+    #                     help='experiment configure file name',
+    #                     required=True,
+    #                     type=str)
     parser.add_argument('--cfg',
                         help='experiment configure file name',
-                        required=True,
+                        default='../experiments/coco/hrnet/w32_256x192_adam_lr1e-3.yaml',
                         type=str)
 
     parser.add_argument('opts',

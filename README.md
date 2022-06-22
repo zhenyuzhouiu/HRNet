@@ -13,7 +13,7 @@ This is an official pytorch implementation of [*Deep High-Resolution Representat
 In this work, we are interested in the human pose estimation problem with a focus on learning reliable high-resolution representations. Most existing methods **recover high-resolution representations from low-resolution representations** produced by a high-to-low resolution network. Instead, our proposed network **maintains high-resolution representations** through the whole process.
 We start from a high-resolution subnetwork as the first stage, gradually add high-to-low resolution subnetworks one by one to form more stages, and connect the mutli-resolution subnetworks **in parallel**. We conduct **repeated multi-scale fusions** such that each of the high-to-low resolution representations receives information from other parallel representations over and over, leading to rich high-resolution representations. As a result, the predicted keypoint heatmap is potentially more accurate and spatially more precise. We empirically demonstrate the effectiveness of our network through the superior pose estimation results over two benchmark datasets: the COCO keypoint detection dataset and the MPII Human Pose dataset. </br>
 
-![Illustrating the architecture of the proposed HRNet](/figures/hrnet.png)
+![Illustrating the architecture of the proposed HRNet](figures/hrnet.png)
 ## Main Results
 ### Results on MPII val
 | Arch               | Head | Shoulder | Elbow | Wrist |  Hip | Knee | Ankle | Mean | Mean@0.1 |
@@ -235,9 +235,9 @@ python visualization/plot_coco.py \
 ```
 
 
-<img src="figures\visualization\coco\score_610_id_2685_000000002685.png" height="215"><img src="figures\visualization\coco\score_710_id_153229_000000153229.png" height="215"><img src="figures\visualization\coco\score_755_id_343561_000000343561.png" height="215">
+<img src="figures/visualization/coco/score_610_id_2685_000000002685.png" height="215"><img src="figures/visualization/coco/score_710_id_153229_000000153229.png" height="215"><img src="figures/visualization/coco/score_755_id_343561_000000343561.png" height="215">
 
-<img src="figures\visualization\coco\score_755_id_559842_000000559842.png" height="209"><img src="figures\visualization\coco\score_770_id_6954_000000006954.png" height="209"><img src="figures\visualization\coco\score_919_id_53626_000000053626.png" height="209">
+<img src="figures/visualization/coco/score_755_id_559842_000000559842.png" height="209"><img src="figures/visualization/coco/score_770_id_6954_000000006954.png" height="209"><img src="figures/visualization/coco/score_919_id_53626_000000053626.png" height="209">
 
 ### Other applications
 Many other dense prediction tasks, such as segmentation, face alignment and object detection, etc. have been benefited by HRNet. More information can be found at [High-Resolution Networks](https://github.com/HRNet).
